@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '01_basic_widgets.dart';
 import '02_layouts.dart';
 import '03_interactions.dart';
+import '04_navigation.dart';
+import '05_state_management.dart';
+import '06_network_request.dart';
+import '07_data_persistence.dart';
 
 /// 示例列表页面
 /// 可以在这里选择查看不同的示例
@@ -66,6 +70,78 @@ class ExampleListPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const InteractionsExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例4：路由和导航
+          _buildExampleCard(
+            context,
+            title: '示例4：路由和导航',
+            description: '学习页面跳转、底部导航、抽屉导航等',
+            icon: Icons.navigation,
+            color: Colors.orange,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NavigationExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例5：状态管理
+          _buildExampleCard(
+            context,
+            title: '示例5：状态管理 (Provider)',
+            description: '学习使用Provider进行全局状态管理',
+            icon: Icons.storage,
+            color: Colors.teal,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const StateManagementExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例6：网络请求
+          _buildExampleCard(
+            context,
+            title: '示例6：网络请求',
+            description: '学习HTTP请求、JSON解析、错误处理',
+            icon: Icons.cloud,
+            color: Colors.indigo,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const NetworkRequestExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例7：数据持久化
+          _buildExampleCard(
+            context,
+            title: '示例7：数据持久化',
+            description: '学习使用SharedPreferences保存数据',
+            icon: Icons.save,
+            color: Colors.deepPurple,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DataPersistenceExample(),
                 ),
               );
             },

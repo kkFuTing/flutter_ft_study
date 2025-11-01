@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'examples/example_list.dart';
+import 'examples/04_navigation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +35,17 @@ class MyApp extends StatelessWidget {
       // 默认显示示例列表页面，你可以改成 MyHomePage 查看原始计数器示例
       home: const ExampleListPage(),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      
+      // 命名路由配置（用于示例4中的命名路由演示）
+      routes: {
+        '/named-route': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments as String?;
+          return DetailPage(
+            title: '命名路由示例',
+            message: args ?? '这是通过命名路由打开的页面',
+          );
+        },
+      },
     );
   }
 }
