@@ -6,6 +6,7 @@ import '04_navigation.dart';
 import '05_state_management.dart';
 import '06_network_request.dart';
 import '07_data_persistence.dart';
+import '08_getx_state_management.dart';
 
 /// 示例列表页面
 /// 可以在这里选择查看不同的示例
@@ -142,6 +143,24 @@ class ExampleListPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const DataPersistenceExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例8：GetX 状态管理
+          _buildExampleCard(
+            context,
+            title: '示例8：GetX 状态管理',
+            description: '学习使用GetX进行响应式、依赖注入和路由管理',
+            icon: Icons.bolt,
+            color: Colors.orangeAccent,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => GetXExample(),
                 ),
               );
             },

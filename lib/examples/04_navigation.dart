@@ -282,7 +282,7 @@ class _BottomNavExampleState extends State<BottomNavExample> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: '首页',
+            label: '首页1',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
