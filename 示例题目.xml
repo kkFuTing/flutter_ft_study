@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questions>
+  <!-- 单选题示例 -->
+  <question>
+    <stem>Flutter是由哪个公司开发的？</stem>
+    <type>single</type>
+    <options>
+      <option label="A">Google</option>
+      <option label="B">Facebook</option>
+      <option label="C">Microsoft</option>
+      <option label="D">Apple</option>
+    </options>
+    <answer>A</answer>
+    <analysis>Flutter是由Google开发的跨平台UI框架。</analysis>
+    <category>Flutter基础</category>
+    <tags>
+      <tag>Flutter</tag>
+      <tag>基础</tag>
+    </tags>
+  </question>
+
+  <!-- 多选题示例 -->
+  <question>
+    <stem>以下哪些是Flutter的状态管理方案？（多选）</stem>
+    <type>multiple</type>
+    <options>
+      <option label="A">Provider</option>
+      <option label="B">GetX</option>
+      <option label="C">Bloc</option>
+      <option label="D">Redux</option>
+    </options>
+    <answer>A,B,C</answer>
+    <analysis>Provider、GetX和Bloc都是Flutter常用的状态管理方案。Redux虽然也可以使用，但不是Flutter原生的。</analysis>
+    <category>状态管理</category>
+    <tags>
+      <tag>Flutter</tag>
+      <tag>状态管理</tag>
+    </tags>
+  </question>
+
+  <!-- 判断题示例 -->
+  <question>
+    <stem>Flutter使用Dart语言开发。</stem>
+    <type>judgment</type>
+    <options>
+      <option label="A">正确</option>
+      <option label="B">错误</option>
+    </options>
+    <answer>A</answer>
+    <analysis>Flutter确实使用Dart语言开发，Dart是Google开发的编程语言。</analysis>
+    <category>Flutter基础</category>
+    <tags>
+      <tag>Flutter</tag>
+      <tag>Dart</tag>
+    </tags>
+  </question>
+
+  <!-- 填空题示例 -->
+  <question>
+    <stem>在Flutter中，使用______关键字可以创建无状态组件。</stem>
+    <type>fill</type>
+    <options/>
+    <answer>StatelessWidget</answer>
+    <analysis>StatelessWidget是Flutter中用于创建无状态组件的基类。</analysis>
+    <category>Flutter基础</category>
+    <tags>
+      <tag>Flutter</tag>
+      <tag>Widget</tag>
+    </tags>
+  </question>
+
+  <!-- 带题干图片的单选题示例 -->
+  <question>
+    <stem>下面哪个Widget用于显示文本？</stem>
+    <stemImage>C:/images/question1.jpg</stemImage>
+    <type>single</type>
+    <options>
+      <option label="A">Container</option>
+      <option label="B">Text</option>
+      <option label="C">Image</option>
+      <option label="D">Icon</option>
+    </options>
+    <answer>B</answer>
+    <analysis>Text Widget专门用于显示文本内容。</analysis>
+    <category>Widget基础</category>
+    <tags>
+      <tag>Widget</tag>
+      <tag>Text</tag>
+    </tags>
+  </question>
+
+  <!-- 带选项图片的多选题示例 -->
+  <question>
+    <stem>以下哪些布局方式是正确的？（多选）</stem>
+    <type>multiple</type>
+    <options>
+      <option label="A" image="C:/images/layout1.jpg">Column布局</option>
+      <option label="B" image="C:/images/layout2.jpg">Row布局</option>
+      <option label="C" image="C:/images/layout3.jpg">Stack布局</option>
+      <option label="D" image="C:/images/layout4.jpg">Container布局</option>
+    </options>
+    <answer>A,B,C</answer>
+    <analysis>Column、Row和Stack都是Flutter中常用的布局Widget。</analysis>
+    <category>布局</category>
+    <tags>
+      <tag>布局</tag>
+      <tag>Widget</tag>
+    </tags>
+  </question>
+
+  <!-- 带解析图片的判断题示例 -->
+  <question>
+    <stem>Flutter可以同时支持Android和iOS平台。</stem>
+    <type>judgment</type>
+    <options>
+      <option label="A">正确</option>
+      <option label="B">错误</option>
+    </options>
+    <answer>A</answer>
+    <analysis>Flutter是跨平台框架，一套代码可以同时运行在Android和iOS平台上。</analysis>
+    <analysisImage>https://example.com/cross-platform.png</analysisImage>
+    <category>Flutter基础</category>
+    <tags>
+      <tag>跨平台</tag>
+    </tags>
+  </question>
+
+  <!-- 复杂填空题示例 -->
+  <question>
+    <stem>在Flutter中，使用______可以管理有状态的组件，使用______可以创建无状态的组件。</stem>
+    <type>fill</type>
+    <options/>
+    <answer>StatefulWidget,StatelessWidget</answer>
+    <analysis>StatefulWidget用于创建有状态的组件，可以保存和更新状态。StatelessWidget用于创建无状态的组件。</analysis>
+    <category>Flutter基础</category>
+    <tags>
+      <tag>Widget</tag>
+      <tag>状态</tag>
+    </tags>
+  </question>
+
+  <!-- 带所有图片字段的完整示例 -->
+  <question>
+    <stem>根据下面的代码截图，选择正确的答案。</stem>
+    <stemImage>https://example.com/code-screenshot.png</stemImage>
+    <type>single</type>
+    <options>
+      <option label="A" image="C:/images/option_a.png">选项A的说明</option>
+      <option label="B" image="C:/images/option_b.png">选项B的说明</option>
+      <option label="C" image="C:/images/option_c.png">选项C的说明</option>
+      <option label="D" image="C:/images/option_d.png">选项D的说明</option>
+    </options>
+    <answer>A</answer>
+    <analysis>这是正确答案的详细解析。</analysis>
+    <analysisImage>https://example.com/analysis-diagram.png</analysisImage>
+    <category>代码理解</category>
+    <tags>
+      <tag>代码</tag>
+      <tag>理解</tag>
+    </tags>
+  </question>
+
+  <!-- 热重载功能说明 -->
+  <question>
+    <stem>Flutter的热重载功能可以做什么？</stem>
+    <type>single</type>
+    <options>
+      <option label="A">快速更新UI，无需重启应用</option>
+      <option label="B">自动保存代码</option>
+      <option label="C">优化应用性能</option>
+      <option label="D">生成APK文件</option>
+    </options>
+    <answer>A</answer>
+    <analysis>热重载（Hot Reload）可以让开发者快速看到代码更改的效果，无需完全重启应用。这大大提高了开发效率。</analysis>
+    <category>开发工具</category>
+    <tags>
+      <tag>热重载</tag>
+      <tag>开发</tag>
+    </tags>
+  </question>
+
+  <!-- GetX特点多选题 -->
+  <question>
+    <stem>GetX的主要特点包括哪些？（多选）</stem>
+    <type>multiple</type>
+    <options>
+      <option label="A">状态管理</option>
+      <option label="B">路由管理</option>
+      <option label="C">依赖注入</option>
+      <option label="D">网络请求</option>
+    </options>
+    <answer>A,B,C</answer>
+    <analysis>GetX是一个功能强大的Flutter框架，集成了状态管理、路由管理和依赖注入等功能。虽然也可以用于网络请求，但这不是GetX的核心特点。</analysis>
+    <category>状态管理</category>
+    <tags>
+      <tag>GetX</tag>
+      <tag>状态管理</tag>
+    </tags>
+  </question>
+
+  <!-- 布局Widget多选题 -->
+  <question>
+    <stem>在Flutter中，以下哪些布局Widget可以包含多个子Widget？（多选）</stem>
+    <type>multiple</type>
+    <options>
+      <option label="A">Column</option>
+      <option label="B">Row</option>
+      <option label="C">Stack</option>
+      <option label="D">Container</option>
+    </options>
+    <answer>A,B,C</answer>
+    <analysis>Column、Row和Stack都可以包含多个子Widget。Container通常只包含一个子Widget。</analysis>
+    <category>布局</category>
+    <tags>
+      <tag>布局</tag>
+      <tag>Widget</tag>
+    </tags>
+  </question>
+</questions>
+

@@ -7,6 +7,7 @@ import '05_state_management.dart';
 import '06_network_request.dart';
 import '07_data_persistence.dart';
 import '08_getx_state_management.dart';
+import '../quiz_app/app.dart';
 
 /// 示例列表页面
 /// 可以在这里选择查看不同的示例
@@ -161,6 +162,24 @@ class ExampleListPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => GetXExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 实战项目：刷题工具
+          _buildExampleCard(
+            context,
+            title: '实战项目：刷题工具',
+            description: '使用GetX开发的完整刷题应用（题库、练习、统计）',
+            icon: Icons.quiz,
+            color: Colors.teal,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const QuizApp(),
                 ),
               );
             },

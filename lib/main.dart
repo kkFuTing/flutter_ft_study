@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
-import 'examples/example_list.dart';
+import 'package:flutter/foundation.dart';
+import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'examples/04_navigation.dart';
+import 'quiz_app/app.dart' show QuizApp;
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Web平台：初始化Hive
+  if (kIsWeb) {
+    await QuizApp.init();
+  }
+  // 桌面平台使用 sqflite_common_ffi
+  else if (defaultTargetPlatform == TargetPlatform.windows ||
+      defaultTargetPlatform == TargetPlatform.linux ||
+      defaultTargetPlatform == TargetPlatform.macOS) {
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
+  }
+  // 移动平台（Android/iOS）使用默认的 sqflite，无需额外配置
+
   runApp(const MyApp());
 }
 
@@ -33,8 +51,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       // 默认显示示例列表页面，你可以改成 MyHomePage 查看原始计数器示例
-      home: const ExampleListPage(),
+      // 或者改成 QuizApp() 进入刷题工具
+      // home: const ExampleListPage(),
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const QuizApp(), // 刷题工具入口
       
       // 命名路由配置（用于示例4中的命名路由演示）
       routes: {
