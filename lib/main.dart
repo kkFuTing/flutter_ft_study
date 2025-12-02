@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_ft_study/examples/example_list.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'examples/04_navigation.dart';
@@ -52,9 +53,10 @@ class MyApp extends StatelessWidget {
       ),
       // 默认显示示例列表页面，你可以改成 MyHomePage 查看原始计数器示例
       // 或者改成 QuizApp() 进入刷题工具
-      // home: const ExampleListPage(),
+      home: const ExampleListPage(),
+
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
-      home: const QuizApp(), // 刷题工具入口
+      // home: const QuizApp(), // 刷题工具入口
       
       // 命名路由配置（用于示例4中的命名路由演示）
       routes: {

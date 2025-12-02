@@ -7,6 +7,7 @@ import '05_state_management.dart';
 import '06_network_request.dart';
 import '07_data_persistence.dart';
 import '08_getx_state_management.dart';
+import '09_go_router.dart';
 import '../quiz_app/app.dart';
 
 /// 示例列表页面
@@ -162,6 +163,24 @@ class ExampleListPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => GetXExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例9：GoRouter 路由管理
+          _buildExampleCard(
+            context,
+            title: '示例9：GoRouter 路由管理',
+            description: '学习声明式路由、参数传递、嵌套路由、路由守卫',
+            icon: Icons.route,
+            color: Colors.indigo,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const GoRouterExample(),
                 ),
               );
             },
