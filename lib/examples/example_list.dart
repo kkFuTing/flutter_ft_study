@@ -11,6 +11,7 @@ import '09_go_router.dart';
 import '10_get_it.dart';
 import '11_riverpod.dart';
 import '12_isolate.dart';
+import '13_future.dart';
 import '../quiz_app/app.dart';
 
 /// 示例列表页面
@@ -238,6 +239,24 @@ class ExampleListPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const IsolateExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例13：Future 异步编程
+          _buildExampleCard(
+            context,
+            title: '示例13：Future 异步编程',
+            description: '学习 Future、async/await、错误处理、组合方法',
+            icon: Icons.hourglass_empty,
+            color: Colors.lightBlue,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FutureExample(),
                 ),
               );
             },
