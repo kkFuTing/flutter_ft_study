@@ -10,6 +10,7 @@ import '08_getx_state_management.dart';
 import '09_go_router.dart';
 import '10_get_it.dart';
 import '11_riverpod.dart';
+import '12_isolate.dart';
 import '../quiz_app/app.dart';
 
 /// 示例列表页面
@@ -219,6 +220,24 @@ class ExampleListPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const RiverpodExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例12：Isolate 并发编程
+          _buildExampleCard(
+            context,
+            title: '示例12：Isolate 并发编程',
+            description: '学习 Isolate、消息传递、compute 函数、并发处理',
+            icon: Icons.speed,
+            color: Colors.amber,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const IsolateExample(),
                 ),
               );
             },
