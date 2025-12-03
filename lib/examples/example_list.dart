@@ -8,6 +8,8 @@ import '06_network_request.dart';
 import '07_data_persistence.dart';
 import '08_getx_state_management.dart';
 import '09_go_router.dart';
+import '10_get_it.dart';
+import '11_riverpod.dart';
 import '../quiz_app/app.dart';
 
 /// 示例列表页面
@@ -181,6 +183,42 @@ class ExampleListPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const GoRouterExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例10：GetIt 依赖注入
+          _buildExampleCard(
+            context,
+            title: '示例10：GetIt 依赖注入',
+            description: '学习服务定位、依赖注入、单例模式、工厂模式',
+            icon: Icons.inventory,
+            color: Colors.deepOrange,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const GetItExample(),
+                ),
+              );
+            },
+          ),
+          const SizedBox(height: 16),
+
+          // 示例11：Riverpod 状态管理
+          _buildExampleCard(
+            context,
+            title: '示例11：Riverpod 状态管理',
+            description: '学习 Provider、状态管理、依赖注入、生命周期管理',
+            icon: Icons.water_drop,
+            color: Colors.cyan,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const RiverpodExample(),
                 ),
               );
             },
