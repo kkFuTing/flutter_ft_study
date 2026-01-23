@@ -11,7 +11,6 @@ class RiverpodExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    Isolate.spawn
     // 使用 ProviderScope 包裹整个应用
     return ProviderScope(
       child: MaterialApp(

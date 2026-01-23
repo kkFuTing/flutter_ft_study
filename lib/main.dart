@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_ft_study/examples/example_list.dart';
+import 'package:flutter_ft_study/flutter/dn_home_app.dart';
+import 'package:flutter_ft_study/flutter/dn_my_app.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'examples/04_navigation.dart';
@@ -31,9 +33,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    //MaterialApp组件作为应用根组件，是Flutter应用的入口点
+    return MaterialApp( 
+      //title: 设置应用标题
       title: 'Flutter Demo',
+      //theme: 设置应用主题
       theme: ThemeData(
+        //colorScheme: 设置应用主题颜色
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -53,7 +59,10 @@ class MyApp extends StatelessWidget {
       ),
       // 默认显示示例列表页面，你可以改成 MyHomePage 查看原始计数器示例
       // 或者改成 QuizApp() 进入刷题工具
-      home: const ExampleListPage(),
+      //home: 指定应用首页组件
+      // home: const ExampleListPage(),
+      // home: const MyApp(),
+      home: const DnHomeApp(),
 
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       // home: const QuizApp(), // 刷题工具入口
