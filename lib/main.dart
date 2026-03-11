@@ -5,6 +5,7 @@ import 'package:flutter_ft_study/flutter/12md_widget.dart';
 import 'package:flutter_ft_study/flutter/dn_home_app.dart';
 import 'package:flutter_ft_study/flutter/dn_my_app.dart';
 import 'package:flutter_ft_study/openchinaexample/open_china_app.dart';
+import 'package:flutter_ft_study/my_diary_app/app.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'examples/04_navigation.dart';
@@ -69,8 +70,10 @@ class MyApp extends StatelessWidget {
       
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
       // home: const QuizApp(), // 刷题工具入口
+      // home: const OpenChinaApp(), // openchinaexample项目
+      // home: const MyDateLogApp(), // 记事日记入口
       debugShowCheckedModeBanner: false,//关闭调试模式 （右手边的 那个debug图标会消失）
-      home: const OpenChinaApp(), // openchinaexample项目
+      home: const MyDateLogApp(), // 记事日记；可改为 OpenChinaApp() 等
 
       // 命名路由配置（用于示例4中的命名路由演示）
       routes: {

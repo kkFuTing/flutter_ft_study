@@ -125,7 +125,7 @@ class AboutHomePageState extends State<AboutHomePage> {
                 DataUtils.isLogin().then((value) {
                   if(value) {
                   //跳转至个人中心
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalCenterPage()));
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalCenterPage()));
                   } else {
                     _lougin();
                   }
