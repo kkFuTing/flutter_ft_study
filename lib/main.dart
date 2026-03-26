@@ -9,19 +9,15 @@ import 'package:flutter_ft_study/my_diary_app/app.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'examples/04_navigation.dart';
-import 'quiz_app/app.dart' show QuizApp;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Web平台：初始化Hive
-  if (kIsWeb) {
-    await QuizApp.init();
-  }
-  // 桌面平台使用 sqflite_common_ffi
-  else if (defaultTargetPlatform == TargetPlatform.windows ||
+  // Web 平台当前入口为记事应用，不依赖 QuizApp 的初始化。
+  if (!kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.windows ||
       defaultTargetPlatform == TargetPlatform.linux ||
-      defaultTargetPlatform == TargetPlatform.macOS) {
+      defaultTargetPlatform == TargetPlatform.macOS)) {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
   }
