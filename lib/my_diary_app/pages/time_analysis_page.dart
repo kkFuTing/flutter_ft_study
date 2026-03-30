@@ -28,13 +28,21 @@ class TimeAnalysisPage extends StatelessWidget {
     return goalDoneById?[g.id] ?? false;
   }
 
+  /// `date` 为 `YYYY-MM-DD` 时追加「周几」；解析失败则原样返回。
+  static String _dateWithWeekday(String date) {
+    final d = DateTime.tryParse(date);
+    if (d == null) return date;
+    const names = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+    return '$date（${names[d.weekday - 1]}）';
+  }
+
   String _buildTextReport(
     Map<String, int> categoryMap,
     List<TimeBlock> blocks,
     int totalMinutes,
   ) {
     final buf = StringBuffer();
-    buf.writeln('📊 $date 时间分析');
+    buf.writeln('📊 ${_dateWithWeekday(date)} 时间分析');
     buf.writeln('总计 ${TimeParser.formatMinutes(totalMinutes)}（${blocks.length}段）');
     buf.writeln('');
     if (kDailyGoals.isNotEmpty) {
@@ -71,7 +79,7 @@ class TimeAnalysisPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('$date 时间分析'),
+        title: Text('${_dateWithWeekday(date)} 时间分析'),
         actions: [
           IconButton(
             icon: const Icon(Icons.copy),
