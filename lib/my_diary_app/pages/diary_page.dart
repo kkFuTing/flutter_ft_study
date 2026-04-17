@@ -327,9 +327,9 @@ class _DiaryPageState extends State<DiaryPage> with WidgetsBindingObserver {
     return '${h}h${m}m';
   }
 
-  void _insertStartTime() {
+  void _insertStartTime({String? hhmm}) {
     final text = _controller.text;
-    final timeStr = '${_nowStr()}-';
+    final timeStr = '${hhmm ?? _nowStr()}-';
 
     // 情况1：内容为空 → 先插日期标题，换行，再插开始时间
     if (text.trim().isEmpty) {
@@ -416,12 +416,88 @@ class _DiaryPageState extends State<DiaryPage> with WidgetsBindingObserver {
       lineEnd == -1 ? text.length : lineEnd,
     );
 
+    // 优化：点击事件时自动补“结束+耗时”
+    // 场景：当前行是 `HH:MM-`（有开始、没结束） → 自动补全到 `HH:MM-HH:MM Xm `
+    final hasStartOnly = RegExp(r'\d{1,2}:\d{2}-').hasMatch(currentLine) &&
+        !RegExp(r'\d{1,2}:\d{2}-\d{1,2}:\d{2}').hasMatch(currentLine);
+    bool autoInsertedEnd = false;
+    if (hasStartOnly) {
+      final m = RegExp(r'(\d{1,2}:\d{2})-').firstMatch(currentLine);
+      final startStr = m?.group(1);
+      final endStr = _nowStr();
+      final endTime = _parseTime(endStr);
+      final startTime = startStr != null ? _parseTime(startStr) : null;
+
+      String insertText;
+      if (startTime != null && endTime != null) {
+        var diff = endTime.difference(startTime);
+        if (diff.isNegative) {
+          diff = endTime.add(const Duration(hours: 24)).difference(startTime);
+        }
+
+        // 避免连续点事件时生成“0m 新记录”：
+        // 若当前行只是自动生成的 `HH:MM-`，且上一行已有完整时间段，
+        // 则把事件并到上一行，不再结束这一条新记录。
+        if (diff.inMinutes <= 0 &&
+            RegExp(r'^\s*\d{1,2}:\d{2}-\s*$').hasMatch(currentLine) &&
+            lineStart > 0) {
+          final prevLineBreak = text.lastIndexOf('\n', lineStart - 2);
+          final prevLineStart = prevLineBreak + 1;
+          final prevLine = text.substring(prevLineStart, lineStart - 1);
+          final prevHasEndTime =
+              RegExp(r'\d{1,2}:\d{2}-\d{1,2}:\d{2}').hasMatch(prevLine);
+          if (prevHasEndTime) {
+            final prevNeedsSpace = prevLine.trim().isNotEmpty &&
+                !prevLine.endsWith(' ');
+            _controller.selection = TextSelection.collapsed(
+              offset: lineStart - 1,
+            );
+            _insertAtCursor('${prevNeedsSpace ? ' ' : ''}$event');
+            return;
+          }
+        }
+        insertText = '$endStr ${_formatDuration(diff)} ';
+      } else {
+        insertText = '$endStr ';
+      }
+      _insertAtCursor(insertText);
+      autoInsertedEnd = true;
+    }
+
     // 如果当前行已有内容且末尾不是空格，就先补一个空格
     final needsSpace =
         currentLine.trim().isNotEmpty && !currentLine.endsWith(' ');
     final prefix = needsSpace ? ' ' : '';
 
     _insertAtCursor('$prefix$event');
+
+    // 只有当当前行已经是完整的一段（包含：HH:MM-HH:MM），
+    // 用户才可能在“结束+耗时”后补事件。
+    // 这种情况下，插入事件后自动生成下一段开始时间，便于继续下一段记录。
+    final hasEndTime =
+        autoInsertedEnd ||
+        RegExp(r'\d{1,2}:\d{2}-\d{1,2}:\d{2}').hasMatch(currentLine);
+    if (!hasEndTime) return;
+
+    // 简化规则：只要下一行有任何内容，就不要自动生成开始时间。
+    final afterText = _controller.text;
+    final afterCursor =
+        _controller.selection.start < 0
+            ? afterText.length
+            : _controller.selection.start;
+    final nextNewline = afterText.indexOf('\n', afterCursor);
+    bool nextLineHasContent = false;
+    if (nextNewline != -1) {
+      final nextLineStart = nextNewline + 1;
+      final nextLineEnd = afterText.indexOf('\n', nextLineStart);
+      final nextLine = afterText.substring(
+        nextLineStart,
+        nextLineEnd == -1 ? afterText.length : nextLineEnd,
+      );
+      nextLineHasContent = nextLine.trim().isNotEmpty;
+    }
+
+    if (!nextLineHasContent) _insertStartTime();
   }
 
   void _openHistory() {
@@ -632,7 +708,7 @@ class _DiaryPageState extends State<DiaryPage> with WidgetsBindingObserver {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TextButton.icon(
-                                  onPressed: _insertStartTime,
+                                  onPressed: () => _insertStartTime(),
                                   icon: const Icon(Icons.play_arrow, size: 18),
                                   label: const Text('开始时间'),
                                 ),

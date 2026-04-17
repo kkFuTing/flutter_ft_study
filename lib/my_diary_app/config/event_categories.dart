@@ -18,7 +18,7 @@ const List<EventCategoryDef> kEventCategories = <EventCategoryDef>[
   EventCategoryDef(key: '零嘴', chips: ['零食', '饮料', '水果','夜宵']),
   EventCategoryDef(key: '饮食', chips: ['吃饭', '热饭', '洗碗', '倒水','点外卖']),
   EventCategoryDef(key: '休息', chips: ['睡觉', '午休', '小睡']),
-  EventCategoryDef(key: '通勤', chips: ['工作通勤，外出通勤']),
+  EventCategoryDef(key: '通勤', chips: ['工作通勤','外出通勤']),
   EventCategoryDef(
     key: '编程学习',
     chips: ['C视频课', 'AI视频课', 'Android视频课', 'Flutter视频课', '博客', '书籍'],
@@ -29,7 +29,7 @@ const List<EventCategoryDef> kEventCategories = <EventCategoryDef>[
     chips: ['爵士舞', '散步', '跑步', '跳绳', '羽毛球', '乒乓球', '篮球', '爬山'],
   ),
   EventCategoryDef(key: '娱乐', chips: ['刷抖音', '刷小红书', '看视频','听音乐','公众号']),
-  EventCategoryDef(key: '家务', chips: ['晾衣服', '备菜', '打扫卫生', '打扫房间', '收拾厨房']),
+  EventCategoryDef(key: '家务', chips: ['晾衣服','收衣服','煮饭', '备菜','炒菜' '打扫卫生', '打扫房间', '收拾厨房']),
   EventCategoryDef(
     key: '线上购物',
     chips: ['线上纯逛', '线上买菜', '线上买衣服', '线上买鞋', '线上买化妆品', '线上买其他'],
